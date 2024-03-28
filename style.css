@@ -220,6 +220,11 @@ html {
 
 }
 
+/*---------------------- NAV ---------------------- */
+/* ------------------------------------------------ */
+.primary-nav{
+  text-transform: uppercase;
+}
 
 
 /*---------------------- HEADER-------------------- */
@@ -308,4 +313,16 @@ html {
 .projects-more a:focus  {
     border-bottom: 3px solid var(--clr-accent-neutral);
     outline: none;
+}
+
+/*------------------- ABOUT ME--------------------- */
+/* ------------------------------------------------ */
+
+.section-about-me {
+  background-image: linear-gradient(to right bottom, #ced4da, #e9ecef);
+}
+
+.about-me-text  {
+  font-size: 1.8rem;
+  line-height: 1.8;
 }
