@@ -1,37 +1,98 @@
-
 @media (max-width: 1200px) {
-    html {
-      font-size: 50%;
-    }
+  html {
+    font-size: 50%;
+  }
 }
 
 @media (max-width: 950px) {
-    .hero{
-        grid-template-columns: 1fr;
-        text-align: center;
-        max-width: 75%;
-    }
+  .hero {
+    grid-template-columns: 1fr;
+    text-align: center;
+    max-width: 75%;
+  }
 
-    .grid-projects{
-        grid-template-columns: repeat(2, 1fr);
-    }
+  .grid-projects {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
+  .heading-secondary {
+    font-size: 3.2rem;
+  }
 
+  .about-me-text {
+    font-size: 2.2rem;
+  }
+
+  .btn-mobile-nav {
+    display: block;
+    z-index: 9999;
+    justify-self: end;
+  }
+
+  .main-nav {
+    background-color: hsla(0, 0%, 93%, 0.9);
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 100vh;
+
+    transform: translateX(100%);
+
+    display: flex;
+    justify-content: center;
+
+    /* Hide the nav by default */
+    /* Display: none; doesn't allow any transitions or animations */
+
+    /* 1: hide element visually */
+    opacity: 0;
+
+    /* 2: make it accessible to mouse and keyboard */
+    pointer-events: none;
+
+    /* 3: hide it from screen readers */
+    visibility: hidden;
+
+    transition: all 0.5s ease-in;
+  }
+
+  .nav-open .main-nav {
+    opacity: 1;
+    pointer-events: auto;
+    visibility: visible;
+    transform: translateX(0);
+  }
+
+  .nav-open .icon-mobile-nav[name="close-outline"] {
+    display: block;
+  }
+
+  .nav-open .icon-mobile-nav[name="menu-outline"] {
+    display: none;
+  }
+
+  .primary-nav {
+    flex-direction: column;
+    justify-content: center;
+    gap: 4.8rem;
+    font-size: 3.2rem;
+    text-align: center;
+  }
 }
+
+
+
 
 @media (max-width: 600px) {
-    .hero{
-        max-width: 100%;
-    }
+  .hero {
+    max-width: 100%;
+  }
 
-    .grid-projects{
-        grid-template-columns: 1fr;
-    }
-
+  .grid-projects {
+    grid-template-columns: 1fr;
+  }
 }
-
-/* @media (max-width: 1200px) {
-    html {
-      font-size: 56.25%;
-    }
-} */
