@@ -92,6 +92,10 @@
     max-width: 100%;
   }
 
+  .heading-primary{
+    font-size: 5.2rem;
+  }
+
   .grid-projects {
     grid-template-columns: 1fr;
   }

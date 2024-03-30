@@ -357,3 +357,57 @@ body{
   font-size: 1.8rem;
   line-height: 1.8;
 }
+
+
+/*------------------- SCROLLER--------------------- */
+/* ------------------------------------------------ */
+
+.scroller {
+  max-width: 100rem;
+  margin-inline: auto;
+  margin-block: 2rem;
+}
+
+.scroller__inner {
+  padding-block: 1rem;
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.scroller[data-animated="true"] {
+  overflow: hidden;
+  -webkit-mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+  mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
+}
+
+.scroller[data-animated="true"] .scroller__inner {
+  width: fit-content;
+  flex-wrap: nowrap;
+  animation: scroll 40s linear infinite;
+}
+
+
+
+.tag-list {
+  margin: 0;
+  padding-inline: 0;
+  list-style: none;
+}
+
+.scroller__inner li {
+  display: inline-block;
+  padding: 0.7rem 2rem;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 5px;
+  box-shadow: 0 0.5rem 1rem -0.25rem #ced4da;
+
+  background-color: #ced4da;
+}
+
+@keyframes scroll {
+  to {
+    transform: translate(calc(-50% - 0.5rem));
+  }
+}
