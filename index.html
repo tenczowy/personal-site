@@ -31,9 +31,10 @@
       <nav class="main-nav">
         <ul class="primary-nav">
           <li><a href="#" class="nav-link">home</a></li>
-          <li><a href="#" class="nav-link">projects</a></li>
-          <li><a href="#" class="nav-link">About me</a></li>
-          <li><a href="#" class="nav-link">Contact</a></li>
+          <li><a href="#projects" class="nav-link">projects</a></li>
+          <li><a href="#about-me" class="nav-link">About me</a></li>
+          <li><a href="#slider" class="nav-link">Get Motivated</a></li>
+          <li><a href="#contact-me" class="nav-link">Contact me</a></li>
         </ul>
       </nav>
       <button class="btn-mobile-nav" onclick="toggleMenu()">
@@ -90,7 +91,7 @@
         </ul>
       </aside>
 
-      <section class="section-projects">
+      <section class="section-projects" id="projects">
         <div class="projects container">
           <p class="subheading">Projects</p>
           <h2 class="heading-secondary">Work I've done recently</h2>
@@ -236,7 +237,7 @@
         </div>
       </section>
 
-      <section class="section-about-me">
+      <section class="section-about-me" id="about-me">
         <div class="about-me container">
           <p class="subheading">About me</p>
           <h2 class="heading-secondary">Get to know me a little more</h2>
@@ -267,6 +268,23 @@
             </p>
           </div>
         </div>
+      </section>
+      <section class="section-slider" id="slider">
+        <div class="container">
+        <h2 class="heading-secondary">Get some motivation</h2>
+        <div class="slider-wrapper">
+          <div class="slider">
+            <img src="img/quote-1.webp" alt="slide 1" id="slide-1">
+            <img src="img/quote-2.jpg" alt="slide 2" id="slide-2">
+            <img src="img/quote-3.png" alt="slide 3" id="slide-3">
+          </div>
+          <div class="slider-nav">
+            <a href="#slide-1"></a>
+            <a href="#slide-2"></a>
+            <a href="#slide-3"></a>
+          </div>
+        </div>
+      </div>
       </section>
     </main>
   </body>

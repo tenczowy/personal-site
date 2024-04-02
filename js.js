@@ -28,4 +28,55 @@ function addAnimation() {
   });
 }
 
+// STICKY NAV
 
+const sectionHeroEl = document.querySelector(".section-hero");
+
+const obs = new IntersectionObserver(
+  function (entries) {
+    const ent = entries[0];
+    if (ent.isIntersecting === false) {
+      document.body.classList.add("sticky");
+    } else {
+      document.body.classList.remove("sticky");
+    }
+  },
+  {
+    root: null,
+    threshold: 0,
+    rootMargin: "-80px"
+  }
+);
+
+obs.observe(sectionHeroEl);
+
+// SMOOTH SCROLLING ANIMATION
+const allLinks = document.querySelectorAll("a:link");
+allLinks.forEach(function (link) {
+  link.addEventListener("click", function (e) {
+    e.preventDefault();
+    const href = link.getAttribute("href");
+    console.log(href);
+
+    //Scroll back to top
+    if (href === "#")
+      window.scrollTo({
+        top: 0,
+        behavior: "smooth",
+      });
+
+    //   SCROLL TO OTHER LINKS
+    if (href !== "#" && href.startsWith("#")) {
+      const sectionEl = document.querySelector(href);
+      sectionEl.scrollIntoView({ behavior: "smooth" });
+    }
+
+    // CLOSE MOBILE NAVIGATION
+    if (
+      link.classList.contains("nav-link") &&
+      header.classList.contains("nav-open")
+    ) {
+      toggleMenu();
+    }
+  });
+});
