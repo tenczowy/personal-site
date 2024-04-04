@@ -20,11 +20,10 @@ function addAnimation() {
     const scrollerContent = Array.from(scrollerInner.children);
 
     scrollerContent.forEach((item) => {
-        const duplicatedItem = item.cloneNode(true);
-        duplicatedItem.setAttribute("aria-hidden", true);
-        scrollerInner.appendChild(duplicatedItem);
+      const duplicatedItem = item.cloneNode(true);
+      duplicatedItem.setAttribute("aria-hidden", true);
+      scrollerInner.appendChild(duplicatedItem);
     });
-
   });
 }
 
@@ -44,7 +43,7 @@ const obs = new IntersectionObserver(
   {
     root: null,
     threshold: 0,
-    rootMargin: "-80px"
+    rootMargin: "-80px",
   }
 );
 
@@ -52,10 +51,14 @@ obs.observe(sectionHeroEl);
 
 // SMOOTH SCROLLING ANIMATION
 const allLinks = document.querySelectorAll("a:link");
+
 allLinks.forEach(function (link) {
   link.addEventListener("click", function (e) {
-    e.preventDefault();
+    
     const href = link.getAttribute("href");
+    if(href.startsWith("#")){
+      e.preventDefault();
+    }
     console.log(href);
 
     //Scroll back to top
@@ -80,3 +83,4 @@ allLinks.forEach(function (link) {
     }
   });
 });
+
