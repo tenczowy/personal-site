@@ -19,6 +19,11 @@ normal text: 1.6
   --clr-primary-neutral: #ced4da;
   --clr-accent-neutral: #007bff;
   --clr-text: #343a40;
+  --clr-btn: linear-gradient(
+    90deg,
+    rgba(63, 103, 251, 1) 0%,
+    rgba(70, 228, 252, 1) 100%
+  );
 }
 
 /*---------------- UTILITY CLASSES----------------- */
@@ -58,7 +63,7 @@ normal text: 1.6
 /* 1REM = 10px */
 html {
   font-size: 62.5%;
-  font-family: "Nunito", sans-serif;
+  font-family: 'Nunito', sans-serif;
   overflow-x: hidden;
 }
 
@@ -95,7 +100,14 @@ body {
   font-weight: 700;
   text-transform: uppercase;
   text-decoration: none;
-  background-color: var(--clr-accent-neutral);
+
+  background: rgb(63, 103, 251);
+  background: linear-gradient(
+    90deg,
+    rgba(63, 103, 251, 1) 20%,
+    rgb(0, 171, 197) 100%
+  );
+
   padding: 1.6rem 3.2rem;
   border-radius: 1.2rem;
 
@@ -107,7 +119,12 @@ body {
 .btn:hover,
 .btn:focus {
   outline: none;
-  background-color: #0062cc;
+  background: rgb(63, 103, 251);
+  background: linear-gradient(
+    90deg,
+    rgb(14, 66, 253) 50%,
+    rgb(0, 171, 197) 100%
+  );
 }
 
 .btn-icon {
@@ -129,7 +146,7 @@ body {
 
 .primary-nav a:link::after,
 .primary-nav a:visited::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   transform: scaleX(0);
@@ -183,7 +200,7 @@ body {
   color: #333;
 }
 
-.icon-mobile-nav[name="close-outline"] {
+.icon-mobile-nav[name='close-outline'] {
   display: none;
 }
 
@@ -221,7 +238,9 @@ body {
   align-items: center;
   height: 80px;
   padding: 0 4.8rem;
-  background-color: var(--clr-primary-neutral);
+  /* background-color: var(--clr-primary-neutral); */
+
+  background-color: #15edf0;
 }
 
 .primary-nav {
@@ -239,7 +258,13 @@ body {
 /* ------------------------------------------------ */
 
 .section-hero {
-  background-color: #ced4da;
+  /* background-color: #ced4da; */
+  background: rgb(255, 255, 255);
+  background: linear-gradient(
+    0deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(21, 237, 240, 1) 100%
+  );
 }
 
 .hero {
@@ -363,7 +388,13 @@ body {
 /* ------------------------------------------------ */
 
 .section-about-me {
-  background-image: linear-gradient(to right bottom, #ced4da, #e9ecef);
+  /* background-image: linear-gradient(to right bottom, #ced4da, #e9ecef); */
+  background: rgb(21, 237, 240);
+  background: radial-gradient(
+    circle,
+    rgba(21, 237, 240, 1) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
 }
 
 .about-me-text {
@@ -387,7 +418,7 @@ body {
   flex-wrap: wrap;
 }
 
-.scroller[data-animated="true"] {
+.scroller[data-animated='true'] {
   overflow: hidden;
   -webkit-mask: linear-gradient(
     90deg,
@@ -399,7 +430,7 @@ body {
   mask: linear-gradient(90deg, transparent, white 20%, white 80%, transparent);
 }
 
-.scroller[data-animated="true"] .scroller__inner {
+.scroller[data-animated='true'] .scroller__inner {
   width: fit-content;
   flex-wrap: nowrap;
   animation: scroll 40s linear infinite;
@@ -433,7 +464,6 @@ body {
 
 .slider img {
   flex: 1 0 100%;
-  scroll-snap-align: start;
   object-fit: cover;
 }
 
@@ -445,33 +475,30 @@ body {
   display: flex;
   aspect-ratio: 16/9;
   overflow-x: hidden;
-  scroll-snap-type: x mandatory;
-  scroll-behavior: smooth;
   box-shadow: 0 1.5rem 3rem -0.75rem hsla(0, 0%, 0%, 0.25);
   border-radius: 0.5rem;
 }
 
-.slider-nav {
-  display: flex;
-  column-gap: 1rem;
+.slider-wrapper i {
   position: absolute;
-  bottom: 1.25rem;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 1;
-}
-
-.slider-nav a {
-  width: 1.5rem;
-  height: 1.5rem;
+  top: 50%;
+  height: 45px;
+  width: 45px;
+  cursor: pointer;
+  font-size: 3rem;
+  text-align: center;
+  line-height: 46px;
   border-radius: 50%;
-  background-color: var(--clr-accent-neutral);
-  opacity: 0.75;
-  transition: opacity ease 250ms;
+  background: rgb(0, 171, 197) 100%;
+  transform: translateY(-50%);
 }
 
-.slider-nav a:hover {
-  opacity: 1;
+.slider-wrapper i:first-child {
+  left: -23px;
+}
+
+.slider-wrapper i:last-child {
+  right: -23px;
 }
 
 /*------------------- FOOTER ---------------------- */
@@ -528,11 +555,10 @@ body {
 .social-list li a:link,
 .social-list li a:active,
 .secondary-nav li a:link,
-.secondary-nav li a:active{
+.secondary-nav li a:active {
   color: var(--clr-text);
   text-decoration: none;
 }
-
 
 .copyrights {
   font-size: 1.4rem;
@@ -544,4 +570,3 @@ body {
   font-weight: 600;
   margin-bottom: 2rem;
 }
-

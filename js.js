@@ -1,27 +1,27 @@
-const headerEl = document.getElementById("header");
+const headerEl = document.getElementById('header');
 
 function toggleMenu() {
-  headerEl.classList.toggle("nav-open");
+  headerEl.classList.toggle('nav-open');
 }
 
 // SCROLLER
 
-const scrollers = document.querySelectorAll(".scroller");
+const scrollers = document.querySelectorAll('.scroller');
 
-if (!window.matchMedia("(prefers-reduced-motion: reduced)").matches) {
+if (!window.matchMedia('(prefers-reduced-motion: reduced)').matches) {
   addAnimation();
 }
 
 function addAnimation() {
   scrollers.forEach((scroller) => {
-    scroller.setAttribute("data-animated", true);
+    scroller.setAttribute('data-animated', true);
 
-    const scrollerInner = scroller.querySelector(".scroller__inner");
+    const scrollerInner = scroller.querySelector('.scroller__inner');
     const scrollerContent = Array.from(scrollerInner.children);
 
     scrollerContent.forEach((item) => {
       const duplicatedItem = item.cloneNode(true);
-      duplicatedItem.setAttribute("aria-hidden", true);
+      duplicatedItem.setAttribute('aria-hidden', true);
       scrollerInner.appendChild(duplicatedItem);
     });
   });
@@ -29,58 +29,91 @@ function addAnimation() {
 
 // STICKY NAV
 
-const sectionHeroEl = document.querySelector(".section-hero");
+const sectionHeroEl = document.querySelector('.section-hero');
 
 const obs = new IntersectionObserver(
   function (entries) {
     const ent = entries[0];
     if (ent.isIntersecting === false) {
-      document.body.classList.add("sticky");
+      document.body.classList.add('sticky');
     } else {
-      document.body.classList.remove("sticky");
+      document.body.classList.remove('sticky');
     }
   },
   {
     root: null,
     threshold: 0,
-    rootMargin: "-80px",
+    rootMargin: '-80px',
   }
 );
 
 obs.observe(sectionHeroEl);
 
 // SMOOTH SCROLLING ANIMATION
-const allLinks = document.querySelectorAll("a:link");
+const allLinks = document.querySelectorAll('a:link');
 
 allLinks.forEach(function (link) {
-  link.addEventListener("click", function (e) {
-    
-    const href = link.getAttribute("href");
-    if(href.startsWith("#")){
+  link.addEventListener('click', function (e) {
+    const href = link.getAttribute('href');
+    if (href.startsWith('#')) {
       e.preventDefault();
     }
     console.log(href);
 
     //Scroll back to top
-    if (href === "#")
+    if (href === '#')
       window.scrollTo({
         top: 0,
-        behavior: "smooth",
+        behavior: 'smooth',
       });
 
     //   SCROLL TO OTHER LINKS
-    if (href !== "#" && href.startsWith("#")) {
+    if (href !== '#' && href.startsWith('#')) {
       const sectionEl = document.querySelector(href);
-      sectionEl.scrollIntoView({ behavior: "smooth" });
+      sectionEl.scrollIntoView({ behavior: 'smooth' });
     }
 
     // CLOSE MOBILE NAVIGATION
     if (
-      link.classList.contains("nav-link") &&
-      header.classList.contains("nav-open")
+      link.classList.contains('nav-link') &&
+      header.classList.contains('nav-open')
     ) {
       toggleMenu();
     }
   });
 });
 
+//SLIDER (carousel)
+
+const slider = document.querySelector('.slider'),
+  arrowIcons = document.querySelectorAll('.slider-wrapper i');
+
+arrowIcons.forEach((icon) => {
+  icon.addEventListener('click', () => {
+    console.log(icon);
+  });
+});
+
+let isDragStart = false,
+  prevPageX,
+  prevScrollLeft;
+
+const dragStart = (e) => {
+  isDragStart = true;
+  prevPageX = e.pageX;
+  prevScrollLeft = slider.scrollLeft;
+};
+
+const dragging = (e) => {
+  if (!isDragStart) return;
+  e.preventDefault();
+  let positionDiff = e.pageX - prevPageX;
+  slider.scrollLeft = prevScrollLeft - positionDiff;
+};
+
+const dragEnd = () => {
+  isDragStart = false;
+};
+slider.addEventListener('mousedown', dragStart);
+slider.addEventListener('mousemove', dragging);
+slider.addEventListener('mouseup', dragEnd);
