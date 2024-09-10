@@ -55,6 +55,15 @@ const allLinks = document.querySelectorAll('a:link');
 allLinks.forEach(function (link) {
   link.addEventListener('click', function (e) {
     const href = link.getAttribute('href');
+
+    // Exclude carousel control buttons from smooth scrolling
+    if (
+      link.closest('.carousel-control-prev') ||
+      link.closest('.carousel-control-next')
+    ) {
+      return; // Ignore if the link is a carousel control
+    }
+
     if (href.startsWith('#')) {
       e.preventDefault();
     }
@@ -82,38 +91,3 @@ allLinks.forEach(function (link) {
     }
   });
 });
-
-//SLIDER (carousel)
-
-const slider = document.querySelector('.slider'),
-  arrowIcons = document.querySelectorAll('.slider-wrapper i');
-
-arrowIcons.forEach((icon) => {
-  icon.addEventListener('click', () => {
-    console.log(icon);
-  });
-});
-
-let isDragStart = false,
-  prevPageX,
-  prevScrollLeft;
-
-const dragStart = (e) => {
-  isDragStart = true;
-  prevPageX = e.pageX;
-  prevScrollLeft = slider.scrollLeft;
-};
-
-const dragging = (e) => {
-  if (!isDragStart) return;
-  e.preventDefault();
-  let positionDiff = e.pageX - prevPageX;
-  slider.scrollLeft = prevScrollLeft - positionDiff;
-};
-
-const dragEnd = () => {
-  isDragStart = false;
-};
-slider.addEventListener('mousedown', dragStart);
-slider.addEventListener('mousemove', dragging);
-slider.addEventListener('mouseup', dragEnd);
